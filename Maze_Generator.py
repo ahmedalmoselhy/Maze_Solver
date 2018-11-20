@@ -1,3 +1,5 @@
+import serial
+from time import sleep
 
 class Queue:
     L = []
@@ -141,6 +143,42 @@ class Maze:
         return paths
 
 
+# =================================================================================
+# =================================================================================
+# =================================================================================
+# Serial Communication With Arduino Via Bluetooth
+
+class SerialTransfer(object):
+    def __init__(self, port, baudRate = 9600):
+        self._port = port
+        self._baudRate = baudRate
+        # Establish the connection on a specific port with a specific baud rate
+        self._serial = serial.Serial(self._port, self._baudRate, timeout=5)
+        self._serial.flushInput()
+        self._serial.flushOutput()
+        print("== SERIAL CONNECTION IS ESTABLISHED SUCCESSFULLY! ==")
+
+    def __del__(self):
+        self.close()
+
+    def close(self):
+        self._serial.close()
+
+    def send(self, statement):
+        if(self._serial.isOpen()):
+            print("\n== SERIAL PORT IS OPENED == SENDING ==")
+            statement += '\r\n'
+            encoded = statement.strip().encode()
+            print("Serial is sending", encoded)
+            self._serial.write(encoded)
+            self._serial.flush()
+            sleep(1)
+        else:
+            print("\n== SERIAL PORT IS NOT OPENED! ==")
+
+
+
+
 
 
 # Main App
@@ -153,3 +191,36 @@ class Maze:
 
 t = True # There is a wall
 f = False # There is no wall
+
+# From here you add your own maze, making it so the app can find the shortest path found
+
+
+# From here you have to modify the port so it can send data to the arduino via blutooth
+
+paths = []
+paths.extend(our_maze.depthFirstTraverse())
+paths.extend(our_maze.breadthFirstTraverse())
+
+if(len(paths) > 0 ) :
+    minPath = paths[0]
+    for path in paths :
+        if(len(path) < len(minPath)) :
+            minPath = path
+    minPathStr = ""
+    for coord in minPath :
+        minPathStr += "(" + str(coord[0]) + "_" + str(coord[1]) + ")"
+    print("Min. Length Path:" , minPathStr)
+
+# ------------------------------------------------------------------
+print("=============================================")
+print("=============================================")
+
+# You must change the port from COM5 to the bluetooth port in your device
+
+t = SerialTransfer('COM5') # YOU MUST Change this port
+try:
+    t.send(minPathStr)
+    t.close()
+except Exception as es :
+    t.close()
+    print("Exception : " , ex)
