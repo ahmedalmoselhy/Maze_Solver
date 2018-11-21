@@ -177,6 +177,17 @@ class SerialTransfer(object):
             print("\n== SERIAL PORT IS NOT OPENED! ==")
 
 
+    def recieve(self):
+        if (self._serial.isOpen()):
+            print("\nSerial Port Is Opened ! == recieve()")
+            recievedData = self._serial.readline()
+            stmt = recievedData.decode().strip()
+            return str(stmt)
+        else:
+            print("Serial Port Is Not Opened ! ")
+            return None
+
+
 
 
 
