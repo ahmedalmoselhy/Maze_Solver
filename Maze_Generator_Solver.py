@@ -204,6 +204,11 @@ t = True # There is a wall
 f = False # There is no wall
 
 # From here you add your own maze, making it so the app can find the shortest path found
+contest = Maze(8, 8) # The Maze we have in the project, WILL be included in the project files!!
+
+# contest.addMazeSquare(y, x, LeftWall, RightWall, TopWall, BottomWall)
+
+# First Row
 
 
 # From here you have to modify the port so it can send data to the arduino via blutooth
