@@ -200,15 +200,31 @@ class SerialTransfer(object):
 # =================================================================================
 
 
-t = True # There is a wall
-f = False # There is no wall
+t = True # There is a wall on this side
+f = False # There is no wall on this side
 
 # From here you add your own maze, making it so the app can find the shortest path found
 contest = Maze(8, 8) # The Maze we have in the project, WILL be included in the project files!!
 
+# Define each square of the maze as following
 # contest.addMazeSquare(y, x, LeftWall, RightWall, TopWall, BottomWall)
 
 # First Row
+
+# Second Row
+
+# Third Row
+
+# Forth Row
+
+# Fifth Row
+
+# Sixth Row
+
+# Seventh Row
+
+# Eighth Row
+
 
 
 # From here you have to modify the port so it can send data to the arduino via blutooth
