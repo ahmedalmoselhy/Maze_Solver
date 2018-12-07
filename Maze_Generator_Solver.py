@@ -34,12 +34,6 @@ class Stack:
         return self.count() == 0
 ################
 class MazeNode:
-    # _x = 0
-    # _y = 0
-    # _isLeft = False
-    # _isRight = False
-    # _isTop = False
-    # _isBottom = False
     def __init__(self, y, x, isLeft, isRight, isTop, isBottom):
         self._x = x
         self._y = y
@@ -107,7 +101,6 @@ class Maze:
             # print("Current XY", currentXY)
             if (self._goalNode == currentXY):
                 paths.append(currentPath)
-                break
                 # print(paths)
             currentNode = self.getMazeNodeByCoords(currentXY)
             currentChildren = self.getMazeNodeChildren(currentXY[0], currentXY[1])[::-1]
@@ -133,7 +126,6 @@ class Maze:
             currentXY = currentPath[-1]
             if (self._goalNode == currentXY):
                 paths.append(currentPath)
-                break
             currentNode = self.getMazeNodeByCoords(currentXY)
             currentChildren = self.getMazeNodeChildren(currentXY[0], currentXY[1])[::-1]
             for child in currentChildren:
@@ -289,12 +281,21 @@ contest.addMazeSquare(7, 5, f, f, f, t)
 contest.addMazeSquare(7, 6, f, f, t, t)
 contest.addMazeSquare(7, 7, f, f, t, t)
 
-
+contest.setStartNode(7, 7)
+contest.setGoalNode(1, 0)
 # From here you have to modify the port so it can send data to the arduino via blutooth
 
+print("Depth First : ")
+print(contest.depthFirstTraverse())
+
+print("Breadth First : ")
+print(contest.breadthFirstTraverse())
+
+
+'''
 paths = []
-paths.extend(our_maze.depthFirstTraverse())
-paths.extend(our_maze.breadthFirstTraverse())
+paths.extend(contest.depthFirstTraverse())
+paths.extend(contest.breadthFirstTraverse())
 
 if(len(paths) > 0 ) :
     minPath = paths[0]
@@ -319,3 +320,4 @@ try:
 except Exception as es :
     t.close()
     print("Exception : " , ex)
+'''
