@@ -250,6 +250,14 @@ contest.addMazeSquare(3, 6, f, f, f, f)
 contest.addMazeSquare(3, 7, f, t, f, t)
 
 # Fifth Row
+contest.addMazeSquare(4, 0, t, f, f, f)
+contest.addMazeSquare(4, 1, f, f, t, t)
+contest.addMazeSquare(4, 2, f, f, t, f)
+contest.addMazeSquare(4, 3, f, f, f, f)
+contest.addMazeSquare(4, 4, t, t, f, f)
+contest.addMazeSquare(4, 5, t, f, t, f)
+contest.addMazeSquare(4, 6, f, t, f, f)
+contest.addMazeSquare(4, 7, t, t, t, f)
 
 # Sixth Row
 
