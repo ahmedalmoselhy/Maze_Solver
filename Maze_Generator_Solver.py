@@ -230,6 +230,14 @@ contest.addMazeSquare(1, 6, t, t, f, f)
 contest.addMazeSquare(1, 7, t, t, f, f)
 
 # Third Row
+contest.addMazeSquare(2, 0, t, t, f, f)
+contest.addMazeSquare(2, 1, t, f, f, f)
+contest.addMazeSquare(2, 2, f, f, f, t)
+contest.addMazeSquare(2, 3, f, f, t, f)
+contest.addMazeSquare(2, 4, f, t, t, f)
+contest.addMazeSquare(2, 5, t, t, f, t)
+contest.addMazeSquare(2, 6, t, t, f, f)
+contest.addMazeSquare(2, 7, t, t, f, f)
 
 # Forth Row
 
