@@ -276,22 +276,20 @@ contest.addMazeSquare(7, 0, t, f, f, t)
 contest.addMazeSquare(7, 1, f, f, t, t)
 contest.addMazeSquare(7, 2, f, f, t, t)
 contest.addMazeSquare(7, 3, f, t, f, t)
-contest.addMazeSquare(7, 4, t, f, t, f)
+contest.addMazeSquare(7, 4, t, f, t, t)
 contest.addMazeSquare(7, 5, f, f, f, t)
 contest.addMazeSquare(7, 6, f, f, t, t)
 contest.addMazeSquare(7, 7, f, f, t, t)
 
 contest.setStartNode(7, 7)
 contest.setGoalNode(1, 0)
-# From here you have to modify the port so it can send data to the arduino via blutooth
 
+'''
 print("Depth First : ")
 print(contest.depthFirstTraverse())
 
 print("Breadth First : ")
 print(contest.breadthFirstTraverse())
-
-
 '''
 paths = []
 paths.extend(contest.depthFirstTraverse())
@@ -320,4 +318,3 @@ try:
 except Exception as es :
     t.close()
     print("Exception : " , ex)
-'''
