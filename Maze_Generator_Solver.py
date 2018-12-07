@@ -210,6 +210,14 @@ contest = Maze(8, 8) # The Maze we have in the project, WILL be included in the 
 # contest.addMazeSquare(y, x, LeftWall, RightWall, TopWall, BottomWall)
 
 # First Row
+contest.addMazeSquare(0, 0, t, t, t, f)
+contest.addMazeSquare(0, 1, t, f, f, f)
+contest.addMazeSquare(0, 2, f, f, t, t)
+contest.addMazeSquare(0, 3, f, t, t, f)
+contest.addMazeSquare(0, 4, t, f, t, f)
+contest.addMazeSquare(0, 5, f, f, t, t)
+contest.addMazeSquare(0, 6, f, t, t, f)
+contest.addMazeSquare(0, 7, t, t, t, f)
 
 # Second Row
 
