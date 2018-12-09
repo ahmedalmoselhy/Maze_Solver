@@ -179,122 +179,113 @@ class SerialTransfer(object):
             print("Serial Port Is Not Opened ! ")
             return None
 
-
-
-
-
-
 # Main App
-
-
 # =================================================================================
 # =================================================================================
 # =================================================================================
-
-
 t = True # There is a wall on this side
 f = False # There is no wall on this side
 
 # From here you add your own maze, making it so the app can find the shortest path found
+
 contest = Maze(8, 8) # The Maze we have in the project, WILL be included in the project files!!
 
 # Define each square of the maze as following
 # contest.addMazeSquare(y, x, LeftWall, RightWall, TopWall, BottomWall)
-
 # First Row
-contest.addMazeSquare(0, 0, t, t, t, f)
-contest.addMazeSquare(0, 1, t, f, f, f)
-contest.addMazeSquare(0, 2, f, f, t, t)
-contest.addMazeSquare(0, 3, f, t, t, f)
+contest.addMazeSquare(0, 0, f, f, t, t)
+contest.addMazeSquare(0, 1, f, f, t, t)
+contest.addMazeSquare(0, 2, f, f, t, f)
+contest.addMazeSquare(0, 3, f, t, t, t)
 contest.addMazeSquare(0, 4, t, f, t, f)
 contest.addMazeSquare(0, 5, f, f, t, t)
-contest.addMazeSquare(0, 6, f, t, t, f)
-contest.addMazeSquare(0, 7, t, t, t, f)
+contest.addMazeSquare(0, 6, f, f, t, t)
+contest.addMazeSquare(0, 7, f, t, t, f)
 
 # Second Row
-contest.addMazeSquare(1, 0, t, t, f, f)
-contest.addMazeSquare(1, 1, t, t, f, f)
-contest.addMazeSquare(1, 2, t, t, t, f)
-contest.addMazeSquare(1, 3, t, f, f, t)
-contest.addMazeSquare(1, 4, f, f, f, t)
-contest.addMazeSquare(1, 5, f, t, t, f)
-contest.addMazeSquare(1, 6, t, t, f, f)
+contest.addMazeSquare(1, 0, t, f, t, f)
+contest.addMazeSquare(1, 1, f, f, t, t)
+contest.addMazeSquare(1, 2, f, f, f, t)
+contest.addMazeSquare(1, 3, f, f, t, f)
+contest.addMazeSquare(1, 4, f, t, f, t)
+contest.addMazeSquare(1, 5, t, f, t, f)
+contest.addMazeSquare(1, 6, f, t, t, f)
 contest.addMazeSquare(1, 7, t, t, f, f)
 
 # Third Row
 contest.addMazeSquare(2, 0, t, t, f, f)
-contest.addMazeSquare(2, 1, t, f, f, f)
-contest.addMazeSquare(2, 2, f, f, f, t)
-contest.addMazeSquare(2, 3, f, f, t, f)
-contest.addMazeSquare(2, 4, f, t, t, f)
-contest.addMazeSquare(2, 5, t, t, f, t)
-contest.addMazeSquare(2, 6, t, t, f, f)
+contest.addMazeSquare(2, 1, t, f, t, f)
+contest.addMazeSquare(2, 2, f, t, t, f)
+contest.addMazeSquare(2, 3, t, t, f, f)
+contest.addMazeSquare(2, 4, t, t, t, f)
+contest.addMazeSquare(2, 5, t, f, f, f)
+contest.addMazeSquare(2, 6, f, t, f, t)
 contest.addMazeSquare(2, 7, t, t, f, f)
 
 # Forth Row
-contest.addMazeSquare(3, 0, t, t, f, f)
-contest.addMazeSquare(3, 1, t, f, f, t)
-contest.addMazeSquare(3, 2, f, t, t, t)
-contest.addMazeSquare(3, 3, f, t, t, f)
-contest.addMazeSquare(3, 4, t, t, f, f)
-contest.addMazeSquare(3, 5, t, f, f, f)
-contest.addMazeSquare(3, 6, f, f, f, f)
-contest.addMazeSquare(3, 7, f, t, f, t)
+contest.addMazeSquare(3, 0, t, t, f, t)
+contest.addMazeSquare(3, 1, t, f, f, f)
+contest.addMazeSquare(3, 2, f, t, f, t)
+contest.addMazeSquare(3, 3, t, t, f, f)
+contest.addMazeSquare(3, 4, t, f, f, f)
+contest.addMazeSquare(3, 5, f, f, f, t)
+contest.addMazeSquare(3, 6, f, f, t, t)
+contest.addMazeSquare(3, 7, f, t, f, f)
 
 # Fifth Row
-contest.addMazeSquare(4, 0, t, f, f, f)
-contest.addMazeSquare(4, 1, f, f, t, t)
-contest.addMazeSquare(4, 2, f, f, t, f)
-contest.addMazeSquare(4, 3, f, f, f, f)
+contest.addMazeSquare(4, 0, t, f, t, f)
+contest.addMazeSquare(4, 1, f, f, f, f)
+contest.addMazeSquare(4, 2, f, f, t, t)
+contest.addMazeSquare(4, 3, f, t, f, f)
 contest.addMazeSquare(4, 4, t, t, f, f)
-contest.addMazeSquare(4, 5, t, f, t, f)
-contest.addMazeSquare(4, 6, f, t, f, f)
-contest.addMazeSquare(4, 7, t, t, t, f)
+contest.addMazeSquare(4, 5, t, f, t, t)
+contest.addMazeSquare(4, 6, f, t, t, f)
+contest.addMazeSquare(4, 7, t, t, f, f)
 
 # Sixth Row
 contest.addMazeSquare(5, 0, t, t, f, f)
-contest.addMazeSquare(5, 1, t, f, t, f)
-contest.addMazeSquare(5, 2, f, t, f, f)
-contest.addMazeSquare(5, 3, t, t, f, t)
-contest.addMazeSquare(5, 4, t, f, t, f)
-contest.addMazeSquare(5, 5, t, f, f, t)
-contest.addMazeSquare(5, 6, f, t, f, t)
-contest.addMazeSquare(5, 7, t, f, t, f)
+contest.addMazeSquare(5, 1, t, t, f, f)
+contest.addMazeSquare(5, 2, t, t, t, f)
+contest.addMazeSquare(5, 3, t, f, f, t)
+contest.addMazeSquare(5, 4, f, f, f, t)
+contest.addMazeSquare(5, 5, f, f, t, f)
+contest.addMazeSquare(5, 6, f, t, f, f)
+contest.addMazeSquare(5, 7, t, t, f, f)
 
 # Seventh Row
 contest.addMazeSquare(6, 0, t, t, f, f)
-contest.addMazeSquare(6, 1, t, f, f, t)
-contest.addMazeSquare(6, 2, f, t, f, t)
-contest.addMazeSquare(6, 3, t, f, t, f)
-contest.addMazeSquare(6, 4, f, f, f, t)
-contest.addMazeSquare(6, 5, f, f, t, f)
-contest.addMazeSquare(6, 6, f, f, t, t)
-contest.addMazeSquare(6, 7, f, t, f, t)
+contest.addMazeSquare(6, 1, t, t, f, f)
+contest.addMazeSquare(6, 2, t, f, f, t)
+contest.addMazeSquare(6, 3, f, f, t, f)
+contest.addMazeSquare(6, 4, f, t, t, f)
+contest.addMazeSquare(6, 5, t, t, f, t)
+contest.addMazeSquare(6, 6, t, t, f, f)
+contest.addMazeSquare(6, 7, t, t, f, f)
 
 # Eighth Row
-contest.addMazeSquare(7, 0, t, f, f, t)
-contest.addMazeSquare(7, 1, f, f, t, t)
+contest.addMazeSquare(7, 0, t, t, f, t)
+contest.addMazeSquare(7, 1, t, f, f, t)
 contest.addMazeSquare(7, 2, f, f, t, t)
 contest.addMazeSquare(7, 3, f, t, f, t)
-contest.addMazeSquare(7, 4, t, f, t, t)
-contest.addMazeSquare(7, 5, f, f, f, t)
-contest.addMazeSquare(7, 6, f, f, t, t)
-contest.addMazeSquare(7, 7, f, f, t, t)
+contest.addMazeSquare(7, 4, t, f, f, t)
+contest.addMazeSquare(7, 5, f, f, t, t)
+contest.addMazeSquare(7, 6, f, t, f, f)
+contest.addMazeSquare(7, 7, t, t, f, t)
 
-contest.setStartNode(7, 7)
-contest.setGoalNode(1, 0)
+contest.setGoalNode(0, 0)
+contest.setStartNode(7, 6)
 
-'''
+
 print("Depth First : ")
 print(contest.depthFirstTraverse())
 
 print("Breadth First : ")
 print(contest.breadthFirstTraverse())
-'''
+
 paths = []
 paths.extend(contest.depthFirstTraverse())
 paths.extend(contest.breadthFirstTraverse())
-
+'''
 if(len(paths) > 0 ) :
     minPath = paths[0]
     for path in paths :
@@ -308,13 +299,13 @@ if(len(paths) > 0 ) :
 # ------------------------------------------------------------------
 print("=============================================")
 print("=============================================")
-
+'''
 # You must change the port from COM5 to the bluetooth port in your device
-
-t = SerialTransfer('COM5') # YOU MUST Change this port
-try:
-    t.send(minPathStr)
-    t.close()
-except Exception as es :
-    t.close()
-    print("Exception : " , ex)
+#
+# t = SerialTransfer('COM5') # YOU MUST Change this port
+# try:
+#     t.send(minPathStr)
+#     t.close()
+# except Exception as es :
+#     t.close()
+#     print("Exception : " , ex)
