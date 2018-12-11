@@ -4,7 +4,7 @@ from time import sleep
 class Queue:
     L = []
     def __init__(self):
-        print(self.L)
+        self.L = []
     def enqueue(self,element):
         self.L.append(element)
     def dequeue(self):
@@ -20,7 +20,7 @@ class Queue:
 class Stack:
     L = []
     def __init__(self):
-        print(self.L)
+        self.L = []
     def push(self,element):
         self.L.append(element)
     def pop(self):
@@ -97,6 +97,7 @@ class Maze:
         while (not stack.isEmpty()):
             currentPath = stack.pop()
             # print("Current Path", currentPath)
+            # temp = input()
             currentXY = currentPath[-1]
             # print("Current XY", currentXY)
             if (self._goalNode == currentXY):
@@ -123,6 +124,7 @@ class Maze:
         while (not queue.isEmpty()):
             currentPath = queue.dequeue()
             # print("Current Path", currentPath)
+            # temp = input()
             currentXY = currentPath[-1]
             if (self._goalNode == currentXY):
                 paths.append(currentPath)
@@ -133,13 +135,8 @@ class Maze:
                     continue
                 queue.enqueue(currentPath + [child])
         return paths
-
-
-# =================================================================================
-# =================================================================================
-# =================================================================================
+################
 # Serial Communication With Arduino Via Bluetooth
-
 class SerialTransfer(object):
     def __init__(self, port, baudRate = 9600):
         self._port = port
@@ -168,7 +165,6 @@ class SerialTransfer(object):
         else:
             print("\n== SERIAL PORT IS NOT OPENED! ==")
 
-
     def recieve(self):
         if (self._serial.isOpen()):
             print("\nSerial Port Is Opened ! == recieve()")
@@ -180,9 +176,7 @@ class SerialTransfer(object):
             return None
 
 # Main App
-# =================================================================================
-# =================================================================================
-# =================================================================================
+
 t = True # There is a wall on this side
 f = False # There is no wall on this side
 
@@ -192,6 +186,7 @@ contest = Maze(8, 8) # The Maze we have in the project, WILL be included in the 
 
 # Define each square of the maze as following
 # contest.addMazeSquare(y, x, LeftWall, RightWall, TopWall, BottomWall)
+
 # First Row
 contest.addMazeSquare(0, 0, f, f, t, t)
 contest.addMazeSquare(0, 1, f, f, t, t)
@@ -272,8 +267,8 @@ contest.addMazeSquare(7, 5, f, f, t, t)
 contest.addMazeSquare(7, 6, f, t, f, f)
 contest.addMazeSquare(7, 7, t, t, f, t)
 
-contest.setGoalNode(0, 0)
-contest.setStartNode(7, 6)
+contest.setGoalNode(7, 6)
+contest.setStartNode(0, 0)
 
 
 print("Depth First : ")
@@ -281,11 +276,11 @@ print(contest.depthFirstTraverse())
 
 print("Breadth First : ")
 print(contest.breadthFirstTraverse())
-
+'''
 paths = []
 paths.extend(contest.depthFirstTraverse())
 paths.extend(contest.breadthFirstTraverse())
-'''
+
 if(len(paths) > 0 ) :
     minPath = paths[0]
     for path in paths :
