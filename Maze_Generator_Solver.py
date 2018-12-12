@@ -96,7 +96,7 @@ class Maze:
 
         while (not stack.isEmpty()):
             currentPath = stack.pop()
-            # print("Current Path", currentPath)
+            print("Current Path", currentPath)
             # temp = input()
             currentXY = currentPath[-1]
             # print("Current XY", currentXY)
