@@ -26,6 +26,10 @@ float TimeFw;
 float TimeLe;
 float TimeRi;
 
+// Speed
+int SpeedLeft = 100;
+int SpeedRight = 105;
+
 void setup() {
   //Motors Pins
   pinMode(LeftMotorForward,OUTPUT);
@@ -44,6 +48,7 @@ void setup() {
 }
 
 void loop() {
+  moveStop();
   //Forward
   digitalWrite (UltraFwTrig,LOW);
   delayMicroseconds(3);
@@ -75,32 +80,26 @@ void loop() {
   delay(100);
 
   //Movement Conditions
-  if(DistanceLe > 15.0){
-    turnLeft();
-    delay(300);
+  if(DistanceFw > 10.0){
+    moveForward();
+    delay(500);
   }
-  else if(DistanceRi > 15.0){
+  else if(DistanceRi > 10.0){
     turnRight();
     delay(300);
+    moveForward();
+    delay(500);
   }
-  if(DistanceRi < 5.0 && DistanceLe < 5.0 && DistanceFw <5.0){
+  else if(DistanceLe > 10.0){
+    turnLeft();
+    delay(300);
+    moveForward();
+    delay(500);
+  }
+  else if(DistanceLe < 10.0 && DistanceRi < 10.0 && DistanceFw < 10.0){
     turnLeft();
     delay(300);
   }
-  if(DistanceRi > 170.0){
-    turnLeft();
-    delay(300);
-  }
-  if(DistanceLe > 170.0){
-    turnRight();
-    delay(300);
-  }
-
-  
-
-  moveForward();
-  delay(700);
-  moveStop();
 }
 
 void moveStop(){
@@ -111,28 +110,39 @@ void moveStop(){
 }
 
 void turnLeft(){
+  moveBackward();
   moveStop();
   digitalWrite(RightMotorBackward, LOW);
   digitalWrite(LeftMotorForward, LOW);
   
-  analogWrite(RightMotorForward, 128);
-  analogWrite(LeftMotorBackward, 128);
+  analogWrite(RightMotorForward, SpeedRight);
+  analogWrite(LeftMotorBackward, SpeedLeft);
 }
 
 void turnRight(){
+  moveBackward();
   moveStop();
   digitalWrite(LeftMotorBackward, LOW);
   digitalWrite(RightMotorForward, LOW);
   
-  analogWrite(LeftMotorForward, 128);
-  analogWrite(RightMotorBackward, 128);
+  analogWrite(LeftMotorForward, SpeedLeft);
+  analogWrite(RightMotorBackward, SpeedRight);
 }
 
 void moveForward(){
-  moveStop();
   digitalWrite(RightMotorBackward, LOW);
   digitalWrite(LeftMotorBackward, LOW);
   
-  analogWrite(RightMotorForward, 128);
-  analogWrite(LeftMotorForward, 128);
+  analogWrite(RightMotorForward, SpeedRight);
+  analogWrite(LeftMotorForward, SpeedLeft);
+}
+
+void moveBackward(){
+  moveStop();
+  digitalWrite(RightMotorForward, LOW);
+  digitalWrite(LeftMotorForward, LOW);
+
+  analogWrite(RightMotorBackward, SpeedRight);
+  analogWrite(LeftMotorBackward, SpeedLeft);
+  delay(40);
 }
