@@ -1,4 +1,3 @@
-
 //Left Motor
 const int LeftMotorForward = 5;
 const int LeftMotorBackward = 3;
@@ -27,8 +26,8 @@ float TimeLe;
 float TimeRi;
 
 // Speed
-int SpeedLeft = 100;
-int SpeedRight = 105;
+int SpeedLeft = 180;
+int SpeedRight = 90;
 
 void setup() {
   //Motors Pins
@@ -44,7 +43,6 @@ void setup() {
   pinMode(UltraLeTrig,OUTPUT);
   pinMode(UltraRiEcho,INPUT);
   pinMode(UltraRiTrig,OUTPUT);
-
 }
 
 void loop() {
@@ -57,7 +55,6 @@ void loop() {
   digitalWrite (UltraFwTrig,LOW);
   TimeFw=pulseIn(UltraFwEcho,HIGH);
   DistanceFw=float(TimeFw)/58.8 ;
-  delay(100);
 
   //Left
   digitalWrite (UltraLeTrig,LOW);
@@ -67,7 +64,6 @@ void loop() {
   digitalWrite (UltraLeTrig,LOW);
   TimeLe=pulseIn(UltraLeEcho,HIGH);
   DistanceLe=float(TimeLe)/58.8 ;
-  delay(100);
 
   //Right
   digitalWrite (UltraRiTrig,LOW);
@@ -77,18 +73,18 @@ void loop() {
   digitalWrite (UltraRiTrig,LOW);
   TimeRi=pulseIn(UltraRiEcho,HIGH);
   DistanceRi=float(TimeRi)/58.8 ;
-  delay(100);
 
+  
   //Movement Conditions
-  if(DistanceFw > 10.0){
-    moveForward();
-    delay(500);
-  }
-  else if(DistanceRi > 10.0){
+  if(DistanceRi > 10.0){
     turnRight();
     delay(300);
     moveForward();
     delay(500);
+  }
+  else if(DistanceFw > 10.0){
+    moveForward();
+    delay(1000);
   }
   else if(DistanceLe > 10.0){
     turnLeft();
@@ -97,7 +93,7 @@ void loop() {
     delay(500);
   }
   else if(DistanceLe < 10.0 && DistanceRi < 10.0 && DistanceFw < 10.0){
-    turnLeft();
+    turnRight();
     delay(300);
   }
 }
@@ -144,5 +140,5 @@ void moveBackward(){
 
   analogWrite(RightMotorBackward, SpeedRight);
   analogWrite(LeftMotorBackward, SpeedLeft);
-  delay(40);
+  delay(70);
 }
